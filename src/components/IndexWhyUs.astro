@@ -1,0 +1,29 @@
+<!-- WHY US -->
+  <section class="section bg-navy relative overflow-hidden">
+    <div class="grid-bg opacity-50"></div>
+    <div class="section-inner grid grid-cols-1 gap-12 items-center relative z-10 lg:grid-cols-2 lg:gap-20">
+      <div>
+        <span class="section-eyebrow">Why Dataverse</span>
+        <h2 class="section-h2 light">A partner you can<br>count on.</h2>
+        <div class="divider"></div>
+        <p class="section-lead light">We don't just process your work — we become an extension of your team. Our multi-layer quality assurance, specialized expertise, and dedication to your success set us apart from generic outsourcing providers.</p>
+        <a href="/about" class="btn-ghost mt-8 inline-block">Learn About Us</a>
+      </div>
+      <div class="flex flex-col gap-6">
+        {[
+          { icon: '🎯', title: 'Precision-First', body: 'Multi-layer QA ensures accuracy on every project, every time — no exceptions.' },
+          { icon: '🔒', title: 'Data Security', body: 'Your data is handled with the highest standards of confidentiality and compliance.' },
+          { icon: '⚡', title: 'Scalable Capacity', body: 'We flex with your needs — from small batches to high-volume enterprise workflows.' },
+          { icon: '🤝', title: 'True Partnership', body: 'Dedicated account managers who invest in your success as if it were their own.' },
+        ].map(p => (
+          <div class="flex gap-4.5 items-start bg-white/4 border border-brand/12 rounded-xl px-6 py-5.5 transition-colors duration-300 hover:border-brand/30">
+            <span class="text-2xl shrink-0">{p.icon}</span>
+            <div>
+              <h4 class="text-[0.95rem] font-bold text-white mb-1.5">{p.title}</h4>
+              <p class="text-[0.85rem] text-white/50 leading-[1.6]">{p.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>

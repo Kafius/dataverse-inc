@@ -1,0 +1,93 @@
+---
+const services = [
+  {
+    img: '/images/services/back-office.jpg',
+    alt: 'Back office team working at computers',
+    title: 'Back Office Services',
+    tagline: 'Keep your operations running without the overhead.',
+    desc: 'Full-spectrum back-office support including data entry, document management, database maintenance, records digitization, and administrative processing that keeps your operations running smoothly and accurately.',
+    features: ['Data Entry & Indexing', 'Document Management', 'Database Maintenance', 'Records Digitization', 'Form Processing', 'Data Cleansing & Validation'],
+  },
+  {
+    img: '/images/services/call-center.jpg',
+    alt: 'Call center agent with headset',
+    title: 'Call Center Support',
+    tagline: 'Professional voices for your brand, 24/7.',
+    desc: 'Inbound and outbound call handling, customer service, order processing, appointment scheduling, and live chat support — all delivered by trained agents who represent your brand with professionalism and care.',
+    features: ['Inbound Customer Support', 'Outbound Campaigns', 'Order Processing', 'Appointment Scheduling', 'Live Chat Support', 'After-Hours Coverage'],
+  },
+  {
+    img: '/images/services/cue-sheet.jpg',
+    alt: 'Music production and entertainment documentation',
+    title: 'Cue Sheet Processing',
+    tagline: 'Precision music rights documentation for the entertainment industry.',
+    desc: 'Accurate and efficient cue sheet preparation and processing for film, TV, streaming, and media productions — ensuring precise music rights documentation, publisher data, and royalty reporting compliance.',
+    features: ['Cue Sheet Preparation', 'Music Rights Documentation', 'Publisher Data Management', 'Royalty Reporting', 'PRO Submissions', 'Catalog Maintenance'],
+  },
+  {
+    img: '/images/services/medical-billing.jpg',
+    alt: 'Medical billing specialist reviewing documents',
+    title: 'Medical Billing',
+    tagline: 'Maximize your revenue cycle with expert billing support.',
+    desc: 'End-to-end medical billing and coding services including claims submission, denial management, payment posting, and revenue cycle optimization for healthcare providers of all sizes.',
+    features: ['Medical Coding (ICD-10, CPT)', 'Claims Submission', 'Denial Management', 'Payment Posting', 'Patient Billing', 'Revenue Cycle Optimization'],
+  },
+  {
+    img: '/images/services/transcription.jpg',
+    alt: 'Transcriptionist working with audio equipment',
+    title: 'Transcription',
+    tagline: 'Every word captured accurately and on time.',
+    desc: 'Professional transcription services for medical, legal, corporate, and media content — delivered with high accuracy, fast turnaround, and complete confidentiality. Available in verbatim, edited, and intelligent verbatim formats.',
+    features: ['Medical Transcription', 'Legal Transcription', 'Corporate/General', 'Media & Podcast', 'Verbatim & Edited Formats', 'Timestamped Transcripts'],
+  },
+  {
+    img: '/images/services/admin-support.jpg',
+    alt: 'Virtual administrative assistant at desk',
+    title: 'Administrative Support',
+    tagline: 'Dedicated support that keeps your team focused.',
+    desc: "Dedicated virtual administrative assistants, scheduling support, email management, document preparation, travel coordination, and general office support tailored to your team's specific needs.",
+    features: ['Virtual Assistants', 'Calendar Management', 'Email Management', 'Document Preparation', 'Travel Coordination', 'General Office Support'],
+  },
+];
+---
+
+<section class="section">
+  <div class="section-inner">
+    <div class="flex flex-col gap-20">
+      {services.map((s, i) => (
+        <div class:list={[
+          'grid grid-cols-1 gap-10 items-center pb-20 border-b border-black/[0.07]',
+          'lg:grid-cols-2 lg:gap-18',
+          i === services.length - 1 ? 'border-none pb-0' : ''
+        ]}>
+          <!-- Service Info -->
+          <div>
+            <div class="rounded-2xl overflow-hidden h-64 mb-6">
+              <img src={s.img} alt={s.alt} class="w-full h-full object-cover" />
+            </div>
+            <span class="section-eyebrow">{s.tagline}</span>
+            <h2 class="font-serif text-[clamp(1.6rem,2.5vw,2.2rem)] text-navy leading-[1.2] mb-4 mt-2">{s.title}</h2>
+            <p class="text-base text-muted leading-[1.75]">{s.desc}</p>
+            <a href="/contact" class="btn-primary mt-7">Get a Quote</a>
+          </div>
+
+          <!-- Features Card -->
+          <div class:list={[
+            'bg-cream rounded-2xl px-10 py-9 border border-black/[0.06]',
+            { 'lg:order-first': i % 2 !== 0 }
+          ]}>
+            <h4 class="text-[0.8rem] font-bold tracking-[0.1em] uppercase text-muted mb-6">What's Included</h4>
+            <ul class="flex flex-col gap-3.5 list-none">
+              {s.features.map(f => (
+                <li class="flex items-center gap-3 text-[0.9rem] text-charcoal font-medium">
+                  <span class="w-[22px] h-[22px] shrink-0 bg-brand/10 text-brand rounded-full flex items-center justify-center text-[0.75rem] font-extrabold">✓</span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

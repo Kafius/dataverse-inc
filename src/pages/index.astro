@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import IndexHero from '../components/IndexHero.astro';
+import IndexServices from '../components/IndexServices.astro';
+import IndexWhyUs from '../components/IndexWhyUs.astro';
+import IndexCTABanner from '../components/IndexCTABanner.astro'; 
+---
+
+<Layout>
+  <IndexHero />
+  <IndexServices />
+  <IndexWhyUs/>
+  <IndexCTABanner />
+</Layout>
+
+<style>
+  @keyframes heroIn {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+  }
+</style>

@@ -1,0 +1,60 @@
+---
+const services = [
+  'Back Office Services',
+  'Call Center Support',
+  'Cue Sheet Processing',
+  'Medical Billing',
+  'Transcription',
+  'Administrative Support',
+];
+---
+
+<footer class="bg-[#070F1E] px-[5%] pt-15 pb-9 border-t border-white/5">
+  <div class="grid grid-cols-1 gap-8 mb-12 lg:grid-cols-[2fr_1fr_1fr_1fr] lg:gap-12 sm:grid-cols-2">
+    <div>
+      <a href="/" class="inline-block no-underline mb-3.5">
+        <img src="/dataverse_logo.svg" alt="Dataverse Inc." class="h-7.5 w-auto block brightness-0 invert opacity-85" />
+      </a>
+      <p class="text-[0.875rem] text-white/40 leading-[1.7] max-w-70">
+        Precision-driven outsourcing solutions for businesses that demand accuracy, reliability, and results.
+      </p>
+    </div>
+
+    <div>
+      <h4 class="text-[0.78rem] font-bold tracking-widest uppercase text-white/40 mb-4.5">Company</h4>
+      <ul class="list-none flex flex-col gap-2.5">
+        <li><a href="/about" class="text-white/55 no-underline text-[0.875rem] transition-colors hover:text-brand">About Us</a></li>
+        <li><a href="/about#team" class="text-white/55 no-underline text-[0.875rem] transition-colors hover:text-brand">Our Team</a></li>
+        <li><a href="/community" class="text-white/55 no-underline text-[0.875rem] transition-colors hover:text-brand">Community</a></li>
+        <li><a href="/careers" class="text-white/55 no-underline text-[0.875rem] transition-colors hover:text-brand">Careers</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="text-[0.78rem] font-bold tracking-widest uppercase text-white/40 mb-4.5">Services</h4>
+      <ul class="list-none flex flex-col gap-2.5">
+        {services.map(s => (
+          <li><a href="/services" class="text-white/55 no-underline text-[0.875rem] transition-colors hover:text-brand">{s}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="text-[0.78rem] font-bold tracking-widest uppercase text-white/40 mb-4.5">Contact</h4>
+      <ul class="list-none flex flex-col gap-2.5">
+        <li><a href="mailto:info@dataverseinc.com" class="text-white/55 no-underline text-[0.875rem] transition-colors hover:text-brand">info@dataverse.ph</a></li>
+        <li><a href="tel:0000000000" class="text-white/55 no-underline text-[0.875rem] transition-colors hover:text-brand">(000) 000-0000</a></li>
+        <li><a href="/contact" class="text-white/55 no-underline text-[0.875rem] transition-colors hover:text-brand">Send a Message</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-white/6 pt-7 flex justify-between items-center flex-wrap gap-3">
+    <p class="text-[0.8rem] text-white/30">© {new Date().getFullYear()} Dataverse Inc. All rights reserved.</p>
+    <p class="text-[0.8rem] text-white/30">
+      <a href="#" class="text-white/30 no-underline hover:text-brand transition-colors">Privacy Policy</a>
+      {' · '}
+      <a href="#" class="text-white/30 no-underline hover:text-brand transition-colors">Terms of Service</a>
+    </p>
+  </div>
+</footer>

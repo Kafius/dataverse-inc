@@ -1,0 +1,70 @@
+---
+const navLinks = [
+  { label: 'About', href: '/about' },
+  { label: 'Services', href: '/services' },
+  { label: 'Community', href: '/community' },
+  { label: 'Careers', href: '/careers' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="fixed top-0 left-0 right-0 z-100 bg-[rgba(26,13,46,0.97)] backdrop-blur-xl border-b border-brand/15 px-[5%] flex items-center justify-between h-17">
+  <a href="/" class="flex items-center no-underline">
+    <img src="/dataverse_logo.svg" alt="Dataverse Inc." class="h-8.5 w-auto block brightness-0 invert" />
+  </a>
+
+  <ul class="nav-links hidden md:flex gap-0.5 list-none items-center" id="navLinks">
+    {navLinks.map(link => (
+      <li>
+        <a
+          href={link.href}
+          class:list={[
+            'no-underline text-[0.875rem] font-medium tracking-[0.04em] px-4 py-2 rounded-md transition-all uppercase',
+            currentPath.startsWith(link.href)
+              ? 'text-brand bg-brand/8'
+              : 'text-white/75 hover:text-brand hover:bg-brand/8'
+          ]}
+        >
+          {link.label}
+        </a>
+      </li>
+    ))}
+    <li>
+      <a href="/contact" class="bg-brand text-navy font-bold text-[0.875rem] tracking-[0.04em] px-4 py-2 rounded-md transition-all uppercase no-underline hover:bg-brand-light hover:-translate-y-px inline-block">
+        Contact Us
+      </a>
+    </li>
+  </ul>
+
+  <button class="hamburger md:hidden flex flex-col gap-1.25 cursor-pointer p-1 bg-transparent border-none" id="hamburger" aria-label="Toggle navigation">
+    <span class="w-6 h-0.5 bg-white rounded-sm transition-all block"></span>
+    <span class="w-6 h-0.5 bg-white rounded-sm transition-all block"></span>
+    <span class="w-6 h-0.5 bg-white rounded-sm transition-all block"></span>
+  </button>
+</nav>
+
+<style>
+  @media (max-width: 768px) {
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      background: rgba(26, 13, 46, 0.98);
+      padding: 20px 5%;
+      gap: 4px;
+      border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+    }
+  }
+</style>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger?.addEventListener('click', () => {
+    navLinks?.classList.toggle('open');
+  });
+</script>

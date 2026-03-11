@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #1A0D2E;
+  --color-navy-mid: #2A1550;
+  --color-brand: #8B5CF6;
+  --color-brand-light: #A78BFA;
+  --color-cream: #F3F0F9;
+  --color-warm-white: #FAFAFE;
+  --color-muted: #7C6B9E;
+  --color-charcoal: #2D1F4A;
+  --color-gold: #C084FC;
+
+  --font-serif: 'DM Serif Display', serif;
+  --font-sans: 'DM Sans', sans-serif;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    font-family: var(--font-sans);
+    background-color: #FAFAFE;
+    color: #2D1F4A;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .section-eyebrow {
+    @apply text-xs tracking-[0.14em] uppercase text-brand font-bold mb-3.5 block;
+  }
+  .section-h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    @apply text-navy leading-[1.15] mb-5;
+  }
+  .section-h2.light { @apply text-white; }
+  .section-lead {
+    @apply text-[1.05rem] text-muted leading-7 max-w-[640px];
+  }
+  .section-lead.light { @apply text-white/60; }
+  .divider {
+    @apply w-16 h-[3px] rounded-sm my-5;
+    background: linear-gradient(90deg, #8B5CF6, transparent);
+  }
+  .divider.center { @apply mx-auto my-4; }
+
+  .btn-primary {
+    @apply bg-brand text-navy font-bold py-[14px] px-8 rounded-lg text-[0.95rem] tracking-[0.02em] transition-all inline-block no-underline;
+  }
+  .btn-primary:hover {
+    @apply bg-brand-light -translate-y-0.5;
+    box-shadow: 0 12px 32px rgba(139, 92, 246, 0.3);
+  }
+  .btn-ghost {
+    @apply bg-transparent text-white/80 font-medium py-[14px] px-8 rounded-lg text-[0.95rem] border border-white/20 transition-all inline-block no-underline;
+  }
+  .btn-ghost:hover { @apply border-brand text-brand; }
+
+  .grid-bg {
+    @apply absolute inset-0 pointer-events-none;
+    background-image:
+      linear-gradient(rgba(139, 92, 246, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .section { @apply py-[100px] px-[5%]; }
+  .section-inner { @apply max-w-[1200px] mx-auto; }
+
+  .img-placeholder {
+    background: linear-gradient(135deg, #1A0D2E 0%, #2A1550 100%);
+    @apply rounded-2xl flex flex-col items-center justify-center text-white/30 gap-3 border border-brand/15 text-[0.78rem] tracking-[0.06em] uppercase;
+    font-family: var(--font-sans);
+  }
+}
+
+@media (max-width: 768px) {
+  .section { padding-top: 70px; padding-bottom: 70px; }
+}

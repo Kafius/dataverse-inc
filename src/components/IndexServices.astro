@@ -1,0 +1,73 @@
+---
+const highlights = [
+  {
+    img: '/images/services/back-office.jpg',
+    alt: 'Back office team working at computers',
+    title: 'Back Office Services',
+    desc: 'Streamlined data entry, document processing, and administrative workflows.',
+  },
+  {
+    img: '/images/services/call-center.jpg',
+    alt: 'Call center agent with headset',
+    title: 'Call Center Support',
+    desc: 'Professional inbound and outbound support that represents your brand.',
+  },
+  {
+    img: '/images/services/medical-billing.jpg',
+    alt: 'Medical billing specialist reviewing documents',
+    title: 'Medical Billing',
+    desc: 'End-to-end revenue cycle management for healthcare providers.',
+  },
+  {
+    img: '/images/services/cue-sheet.jpg',
+    alt: 'Music production and entertainment documentation',
+    title: 'Cue Sheet Processing',
+    desc: 'Precision documentation for music rights and entertainment royalties.',
+  },
+  {
+    img: '/images/services/transcription.jpg',
+    alt: 'Transcriptionist working with audio equipment',
+    title: 'Transcription',
+    desc: 'Fast, accurate transcription for legal, medical, and corporate content.',
+  },
+  {
+    img: '/images/services/admin-support.jpg',
+    alt: 'Virtual administrative assistant at desk',
+    title: 'Administrative Support',
+    desc: 'Dedicated virtual assistants and office support tailored to your team.',
+  },
+];
+---
+
+<!-- SERVICES STRIP -->
+<section class="section">
+  <div class="section-inner">
+    <div class="max-w-150 mb-14">
+      <span class="section-eyebrow">What We Do</span>
+      <h2 class="section-h2">Six ways we can help your business grow</h2>
+      <div class="divider"></div>
+      <p class="section-lead">From healthcare billing to entertainment documentation, our specialized teams integrate seamlessly with your operations.</p>
+    </div>
+    <div class="grid grid-cols-1 gap-6 mb-12 sm:grid-cols-2 lg:grid-cols-3">
+      {highlights.map(h => (
+        <div class="bg-white rounded-2xl overflow-hidden border border-black/7 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(26,13,46,0.08)] hover:border-brand/20">
+          <div class="h-48 overflow-hidden">
+            <img
+              src={h.img}
+              alt={h.alt}
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+          <div class="px-7 py-6">
+            <h3 class="font-serif text-[1.2rem] text-navy mb-2.5">{h.title}</h3>
+            <p class="text-[0.875rem] text-muted leading-[1.65]">{h.desc}</p>
+            <a href="/services" class="inline-block mt-4 text-brand text-[0.82rem] font-bold no-underline tracking-[0.04em] uppercase transition-[letter-spacing] duration-200 hover:tracking-[0.08em]">Learn more →</a>
+          </div>
+        </div>
+      ))}
+    </div>
+    <div class="text-center">
+      <a href="/services" class="btn-primary">View All Services</a>
+    </div>
+  </div>
+</section>

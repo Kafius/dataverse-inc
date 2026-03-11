@@ -1,0 +1,43 @@
+---
+const stats = [
+  { num: '10+', label: 'Years of Service' },
+  { num: '500+', label: 'Clients Served' },
+  { num: '6', label: 'Core Services' },
+];
+---
+<!-- HERO -->
+  <section class="min-h-screen bg-navy relative overflow-hidden flex items-center px-[5%] pt-17">
+    <div class="grid-bg"></div>
+    <!-- glows -->
+    <div class="absolute -top-50 -right-50 w-175 h-175 rounded-full pointer-events-none"
+         style="background: radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 65%);"></div>
+    <div class="absolute -bottom-37.5 -left-37.5 w-125 h-125 rounded-full pointer-events-none"
+         style="background: radial-gradient(circle, rgba(86,44,134,0.15) 0%, transparent 65%);"></div>
+
+    <div class="relative z-10 max-w-[760px] animate-[heroIn_0.9s_ease_both]">
+      <div class="inline-flex items-center gap-2.5 bg-brand/12 border border-brand/30 rounded-full px-4 py-1.5 text-[0.78rem] tracking-[0.12em] uppercase text-brand font-semibold mb-7">
+        <span class="w-1.5 h-1.5 bg-brand rounded-full animate-[pulse_2s_infinite] inline-block"></span>
+        Trusted Business Process Outsourcing
+      </div>
+      <h1 class="font-serif text-white leading-[1.1] mb-6" style="font-size: clamp(2.8rem, 5.5vw, 4.5rem);">
+        Where <em class="text-brand not-italic">precision</em><br>meets performance.
+      </h1>
+      <p class="text-lg text-white/65 leading-[1.7] max-w-145 mb-11">
+        Dataverse Inc. delivers expert data entry, back-office support, and specialized processing services — helping organizations scale efficiently and focus on what matters most.
+      </p>
+      <div class="flex gap-4 flex-wrap">
+        <a href="/services" class="btn-primary">Explore Our Services</a>
+        <a href="/careers" class="btn-ghost">Join Our Team</a>
+      </div>
+    </div>
+
+    <!-- stats -->
+    <div class="absolute bottom-15 right-[5%] hidden md:flex gap-12 z-10 animate-[heroIn_0.9s_0.3s_ease_both]">
+      {stats.map(s => (
+        <div class="text-center">
+          <span class="font-serif text-[2.2rem] text-white block">{s.num}</span>
+          <span class="text-[0.8rem] text-brand uppercase tracking-widest">{s.label}</span>
+        </div>
+      ))}
+    </div>
+  </section>
