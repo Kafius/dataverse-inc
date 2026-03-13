@@ -31,7 +31,7 @@ const jobs = [
                 <span class="bg-cream text-muted rounded-full px-3 py-1 text-[0.72rem] font-medium">{job.location}</span>
               </div>
             </div>
-            <a href="/contact" class="bg-navy text-white no-underline px-6 py-2.5 rounded-lg text-[0.84rem] font-bold transition-all shrink-0 hover:bg-brand hover:text-navy">Apply Now</a>
+            <a href={`/contact?inquiry=Career+Opportunities&job=${encodeURIComponent(job.title)}`} class="bg-navy text-white no-underline px-6 py-2.5 rounded-lg text-[0.84rem] font-bold transition-all shrink-0 hover:bg-brand hover:text-navy">Apply Now</a>
           </div>
         ))}
       </div>

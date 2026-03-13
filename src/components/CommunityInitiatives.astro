@@ -2,37 +2,43 @@
 const initiatives = [
   {
     tag: 'Education',
+    photo: 'tech-skills-for-tomorrow',
     title: 'Tech Skills for Tomorrow',
     desc: 'Our annual workshop program brings data literacy and computer skills training to underserved youth, preparing the next generation for careers in technology and administration.',
     detail: 'Every summer, Dataverse team members volunteer as instructors in a six-week digital skills bootcamp partnering with local schools and community centers.',
   },
   {
     tag: 'Workforce Development',
+    photo: 'partnering-with-local-job-fairs',
     title: 'Partnering with Local Job Fairs',
     desc: "We actively participate in community job fairs and partner with workforce development agencies to create meaningful employment opportunities for local residents.",
     detail: "Through our partnerships, we've helped connect over 200 community members with full-time employment — many of whom now thrive on the Dataverse team.",
   },
   {
-    tag: 'Volunteering',
-    title: 'Dataverse Cares Day',
+    tag: 'Holiday Celebrations',
+    photo: 'christmas-2024',
+    title: 'Christmas 2024',
     desc: 'Twice a year, our entire team volunteers with local nonprofits — from food banks to literacy programs — as part of our company-wide day of service.',
     detail: 'In our most recent Cares Day, over 100 team members contributed more than 800 volunteer hours across 12 nonprofits in our community.',
   },
   {
-    tag: 'Scholarships',
-    title: 'The Dataverse Scholars Program',
+    tag: 'Community Involvement',
+    photo: 'ati-atihan-2025',
+    title: 'Ati-Atihan 2025',
     desc: 'We award annual scholarships to students pursuing degrees in business administration, healthcare management, or information technology.',
     detail: 'Recipients receive tuition support and the opportunity to intern with Dataverse, gaining real-world experience while completing their studies.',
   },
   {
-    tag: 'Environment',
-    title: 'Green Operations Initiative',
-    desc: "Dataverse is committed to reducing our environmental footprint through paperless workflows, energy-efficient offices, and responsible e-waste disposal programs.",
-    detail: "Since 2020, we've reduced paper usage by 85% and transitioned all offices to renewable energy sources.",
+    tag: 'Holiday Celebrations',
+    photo: 'easter-2025',
+    title: 'Easter 2025',
+    desc: 'We celebrate the holidays with our community, organizing events and giving back to those in need.',
+    detail: 'Our holiday initiatives include food drives, toy donations, and community gatherings that bring people together.',
   },
   {
-    tag: 'Diversity & Inclusion',
-    title: 'Building a Diverse Workforce',
+    tag: 'Team Building',
+    photo: 'boracay-team-building-retreat',
+    title: 'Boracay Team Building Retreat',
     desc: 'We actively recruit from underrepresented communities and maintain partnerships with organizations that support veterans, individuals with disabilities, and recent immigrants entering the workforce.',
     detail: 'Our team reflects the diversity of the communities we serve, and we believe that diverse perspectives make us better at everything we do.',
   },
@@ -45,9 +51,17 @@ const initiatives = [
       <div class="grid grid-cols-1 gap-9 lg:grid-cols-2">
         {initiatives.map(item => (
           <div class="bg-white rounded-2xl overflow-hidden border border-black/8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)]">
-            <div class="img-placeholder w-full aspect-video rounded-none">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-              <span>Photo Placeholder</span>
+            <div class="w-full aspect-video bg-linear-to-br from-[#dce4ef] to-[#c5d2e4] relative overflow-hidden">
+              <img
+                src={`/images/community/${item.photo}.jpg`}
+                alt={item.title}
+                class="w-full h-full object-cover"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+              />
+              <div class="absolute inset-0 items-center justify-center flex-col gap-2" style="display:none">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-navy/30"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                <span class="text-[0.65rem] tracking-[0.08em] uppercase text-navy/30">Photo Placeholder</span>
+              </div>
             </div>
             <div class="px-8 py-7">
               <span class="inline-block bg-brand/10 text-brand text-[0.7rem] font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-3">{item.tag}</span>

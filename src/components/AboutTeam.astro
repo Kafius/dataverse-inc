@@ -1,17 +1,23 @@
 ---
 const team = [
-  { name: 'Robin De Leon', role: 'Chief Information Officer', bio: '15 years in BPO leadership, Alexandra founded Dataverse with a vision of precision-first outsourcing.' },
-  { name: 'Caroline De Leon', role: 'Chief Executive Officer', bio: 'Oversees day-to-day operations and ensures every client engagement exceeds expectations.' },
-  { name: 'Dennis Alfred De Leon', role: 'Director of Sales, Marketing & Business Development', bio: 'A certified medical billing specialist with a decade of coding and compliance expertise.' },
-  { name: 'Crystal Mae Tacadena', role: 'Team Lead', bio: 'Dedicated to building lasting relationships and ensuring seamless onboarding for every client.' },
-  { name: 'Kharen Abayon', role: 'Team Lead', bio: 'Leads our data entry and back-office teams with a relentless focus on quality and throughput.' },
-  { name: 'Luis Morales', role: 'Director, Call Center Ops', bio: 'Manages our call center division, delivering outstanding support experiences at scale.' },
-  { name: 'Samantha Wells', role: 'Entertainment Services Lead', bio: 'Specializes in cue sheet processing and music rights documentation for the entertainment industry.' },
-  { name: 'Kevin Park', role: 'Head of Technology', bio: 'Drives the tools, systems, and infrastructure that keep Dataverse efficient and secure.' },
-  { name: 'Rachel Torres', role: 'HR & Talent Manager', bio: 'Builds the Dataverse culture by recruiting exceptional people and developing their careers.' },
-  { name: 'Andre Williams', role: 'Quality Assurance Lead', bio: 'Champions our multi-layer QA process, ensuring every deliverable meets the highest standards.' },
-  { name: 'Sofia Nguyen', role: 'Senior Transcription Specialist', bio: 'Leads our transcription team with expertise in medical, legal, and media content.' },
-  { name: 'David Kim', role: 'Client Relations Manager', bio: 'Serves as the day-to-day point of contact for our key accounts, ensuring seamless communication.' },
+  { name: 'Robin De Leon', photo: 'robin-de-leon', role: 'Chief Information Officer', bio: '15 years in BPO leadership, Alexandra founded Dataverse with a vision of precision-first outsourcing.' },
+  { name: 'Caroline De Leon', photo: 'caroline-de-leon', role: 'Chief Executive Officer', bio: 'Oversees day-to-day operations and ensures every client engagement exceeds expectations.' },
+  { name: 'Dennis Alfred De Leon', photo: 'dennis-alfred-de-leon', role: 'Director of Sales, Marketing & Business Development', bio: 'A certified medical billing specialist with a decade of coding and compliance expertise.' },
+  { name: 'Crystal Mae Tacadena', photo: 'crystal-mae-tacadena', role: 'Team Lead', bio: 'Dedicated to building lasting relationships and ensuring seamless onboarding for every client.' },
+  { name: 'Kharen Abayon', photo: 'kharen-abayon', role: 'Team Lead', bio: 'Leads our data entry and back-office teams with a relentless focus on quality and throughput.' },
+  { name: 'Jemimah Salem', photo: 'jemimah-salem', role: 'Dataverse Agent', bio: 'Manages our call center division, delivering outstanding support experiences at scale.' },
+  { name: 'Khrisma Crisostomo', photo: 'khrisma-crisostomo', role: 'Dataverse Agent', bio: 'Specializes in cue sheet processing and music rights documentation for the entertainment industry.' },
+  { name: 'Rachelle Ann Ote', photo: 'rachelle-ann-ote', role: 'Dataverse Agent', bio: 'Drives the tools, systems, and infrastructure that keep Dataverse efficient and secure.' },
+  { name: 'Lara Jane Carpio', photo: 'lara-jane-carpio', role: 'Dataverse Agent', bio: 'Builds the Dataverse culture by recruiting exceptional people and developing their careers.' },
+  { name: 'Kyla Marie C. Molo', photo: 'kyla-marie-molo', role: 'Dataverse Agent', bio: 'Champions our multi-layer QA process, ensuring every deliverable meets the highest standards.' },
+  { name: 'Dejay Dela Cruz Valencia', photo: 'dejay-dela-cruz-valencia', role: 'Dataverse Agent', bio: 'Leads our transcription team with expertise in medical, legal, and media content.' },
+  { name: 'Avi Jae Nino Bravo', photo: 'avi-jae-nino-bravo', role: 'Dataverse Agent', bio: 'Serves as the day-to-day point of contact for our key accounts, ensuring seamless communication.' },
+  { name: 'Ghazel Marie Reyes', photo: 'ghazel-marie-reyes', role: 'Dataverse Agent', bio: 'Serves as the day-to-day point of contact for our key accounts, ensuring seamless communication.' },
+  { name: 'Jan Miles B. Ta-ay', photo: 'jan-miles-ta-ay', role: 'Dataverse Agent', bio: 'Serves as the day-to-day point of contact for our key accounts, ensuring seamless communication.' },
+  { name: 'Juluis Caesar D Candelario', photo: 'juluis-caesar-candelario', role: 'Dataverse Agent', bio: 'Serves as the day-to-day point of contact for our key accounts, ensuring seamless communication.' },
+  { name: 'Aleah Dane Bautista', photo: 'aleah-dane-bautista', role: 'Dataverse Agent', bio: 'Serves as the day-to-day point of contact for our key accounts, ensuring seamless communication.' },
+  { name: 'Arien Dane F. Bautista', photo: 'arien-dane-bautista', role: 'Dataverse Agent', bio: 'Serves as the day-to-day point of contact for our key accounts, ensuring seamless communication.' },
+  { name: 'Arnelyn De Juan Hontilano', photo: 'arnelyn-de-juan-hontilano', role: 'Dataverse Agent', bio: 'Serves as the day-to-day point of contact for our key accounts, ensuring seamless communication.' },
 ];
 ---
 
@@ -28,8 +34,17 @@ const team = [
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {team.map(member => (
         <div class="bg-white rounded-2xl overflow-hidden border border-black/7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(26,13,46,0.1)]">
-          <div class="w-full aspect-square bg-gradient-to-br from-[#dce4ef] to-[#c5d2e4] flex items-center justify-center text-5xl relative after:content-['Photo_Placeholder'] after:absolute after:bottom-2.5 after:text-[0.65rem] after:tracking-[0.08em] after:uppercase after:text-navy/30">
-            👤
+          <div class="w-full aspect-square bg-gradient-to-br from-[#dce4ef] to-[#c5d2e4] relative overflow-hidden">
+            <img
+              src={`/images/team/${member.photo}.jpg`}
+              alt={member.name}
+              class="w-full h-full object-cover"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+            />
+            <div class="absolute inset-0 flex-col items-center justify-center text-5xl hidden" style="display:none">
+              👤
+              <span class="absolute bottom-2.5 text-[0.65rem] tracking-[0.08em] uppercase text-navy/30">Photo Placeholder</span>
+            </div>
           </div>
           <div class="px-5 py-4.5">
             <div class="font-bold text-[0.95rem] text-navy mb-0.5">{member.name}</div>
