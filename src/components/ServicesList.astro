@@ -1,7 +1,15 @@
 ---
+import { Image } from 'astro:assets';
+import backOfficeImg from '../assets/images/back-office.png';
+import callCenterImg from '../assets/images/call-center.png';
+import medicalBillingImg from '../assets/images/medical-billing.png';
+import cueSheetImg from '../assets/images/cue-sheet.png';
+import transcriptionImg from '../assets/images/transcription.png';
+import adminSupportImg from '../assets/images/admin-support.png';
+
 const services = [
   {
-    img: '/images/services/back-office.jpg',
+    img: backOfficeImg,
     alt: 'Back office team working at computers',
     title: 'Back Office Services',
     tagline: 'Keep your operations running without the overhead.',
@@ -9,7 +17,7 @@ const services = [
     features: ['Data Entry & Indexing', 'Document Management', 'Database Maintenance', 'Records Digitization', 'Form Processing', 'Data Cleansing & Validation'],
   },
   {
-    img: '/images/services/call-center.jpg',
+    img: callCenterImg,
     alt: 'Call center agent with headset',
     title: 'Call Center Support',
     tagline: 'Professional voices for your brand, 24/7.',
@@ -17,7 +25,7 @@ const services = [
     features: ['Inbound Customer Support', 'Outbound Campaigns', 'Order Processing', 'Appointment Scheduling', 'Live Chat Support', 'After-Hours Coverage'],
   },
   {
-    img: '/images/services/cue-sheet.jpg',
+    img: cueSheetImg,
     alt: 'Music production and entertainment documentation',
     title: 'Cue Sheet Processing',
     tagline: 'Precision music rights documentation for the entertainment industry.',
@@ -25,7 +33,7 @@ const services = [
     features: ['Cue Sheet Preparation', 'Music Rights Documentation', 'Publisher Data Management', 'Royalty Reporting', 'PRO Submissions', 'Catalog Maintenance'],
   },
   {
-    img: '/images/services/medical-billing.jpg',
+    img: medicalBillingImg,
     alt: 'Medical billing specialist reviewing documents',
     title: 'Medical Billing',
     tagline: 'Maximize your revenue cycle with expert billing support.',
@@ -33,7 +41,7 @@ const services = [
     features: ['Medical Coding (ICD-10, CPT)', 'Claims Submission', 'Denial Management', 'Payment Posting', 'Patient Billing', 'Revenue Cycle Optimization'],
   },
   {
-    img: '/images/services/transcription.jpg',
+    img: transcriptionImg,
     alt: 'Transcriptionist working with audio equipment',
     title: 'Transcription',
     tagline: 'Every word captured accurately and on time.',
@@ -41,7 +49,7 @@ const services = [
     features: ['Medical Transcription', 'Legal Transcription', 'Corporate/General', 'Media & Podcast', 'Verbatim & Edited Formats', 'Timestamped Transcripts'],
   },
   {
-    img: '/images/services/admin-support.jpg',
+    img: adminSupportImg,
     alt: 'Virtual administrative assistant at desk',
     title: 'Administrative Support',
     tagline: 'Dedicated support that keeps your team focused.',
@@ -63,7 +71,7 @@ const services = [
           <!-- Service Info -->
           <div>
             <div class="rounded-2xl overflow-hidden h-64 mb-6">
-              <img src={s.img} alt={s.alt} class="w-full h-full object-cover" />
+              <Image src={s.img} alt={s.alt} class="w-full h-full object-cover" />
             </div>
             <span class="section-eyebrow">{s.tagline}</span>
             <h2 class="font-serif text-[clamp(1.6rem,2.5vw,2.2rem)] text-navy leading-[1.2] mb-4 mt-2">{s.title}</h2>
