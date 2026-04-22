@@ -1,4 +1,6 @@
 ---
+import aboutPhoto from '../assets/images/about-photo.png';
+
 const values = [
   { icon: '🎯', title: 'Precision', body: 'Multi-layer QA ensures accuracy on every project, every time.' },
   { icon: '🤝', title: 'Partnership', body: 'We invest in your success as if it were our own.' },
@@ -37,10 +39,7 @@ const milestones = [
     </div>
 
     <div class="sticky top-22">
-      <div class="img-placeholder w-full aspect-4/3 mb-5">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-        <span>Company Photo Placeholder</span>
-      </div>
+      <img src={aboutPhoto.src} alt="Dataverse team" class="w-full aspect-4/3 object-cover rounded-2xl mb-5" />
 
       <div class="grid grid-cols-2 gap-3">
         {values.map(v => (
