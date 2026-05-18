@@ -1,9 +1,4 @@
 ---
-const stats = [
-  { num: '5+', label: 'Years of Service' },
-  { num: '50+', label: 'Agents Ready to Work' },
-  { num: '6', label: 'Core Services' },
-];
 ---
 <!-- HERO -->
   <section class="min-h-screen bg-navy relative overflow-hidden flex items-center px-[5%] pt-17">
@@ -28,16 +23,6 @@ const stats = [
       <div class="flex gap-4 flex-wrap">
         <a href="/services" class="btn-primary">Explore Our Services</a>
         <a href="/careers" class="btn-ghost">Join Our Team</a>
-      </div>
-
-      <!-- stats -->
-      <div class="absolute bottom-15 right-0 hidden md:flex gap-12 animate-[heroIn_0.9s_0.3s_ease_both]">
-        {stats.map(s => (
-          <div class="text-center">
-            <span class="font-serif text-[2.2rem] text-white block">{s.num}</span>
-            <span class="text-[0.8rem] text-brand uppercase tracking-widest">{s.label}</span>
-          </div>
-        ))}
       </div>
     </div>
   </section>
