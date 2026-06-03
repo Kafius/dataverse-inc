@@ -1,15 +1,40 @@
 ---
+const slides = [
+  { src: '/images/hero/IMG_4954.png', alt: 'Dataverse team collaboration' },
+  { src: '/images/hero/IMG_4972.png', alt: 'Dataverse call center agent' },
+  { src: '/images/hero/IMG_5001.png', alt: 'Dataverse team meeting' },
+  { src: '/images/hero/IMG_5034.png', alt: 'Dataverse team' },
+  { src: '/images/hero/Image (2).jpg', alt: 'Dataverse leadership team' },
+];
 ---
-<!-- HERO -->
-  <section class="min-h-screen bg-navy relative overflow-hidden flex items-center px-[5%] pt-17">
-    <div class="grid-bg"></div>
-    <!-- glows -->
-    <div class="absolute -top-50 -right-50 w-175 h-175 rounded-full pointer-events-none"
-         style="background: radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 65%);"></div>
-    <div class="absolute -bottom-37.5 -left-37.5 w-125 h-125 rounded-full pointer-events-none"
-         style="background: radial-gradient(circle, rgba(86,44,134,0.15) 0%, transparent 65%);"></div>
 
-    <div class="relative z-10 w-full max-w-[1200px] mx-auto self-stretch flex flex-col justify-center items-start animate-[heroIn_0.9s_ease_both]">
+<!-- HERO -->
+<section class="min-h-screen relative overflow-hidden flex items-center px-[5%] pt-17">
+
+  <!-- Carousel background -->
+  <div class="absolute inset-0">
+    {slides.map((slide, i) => (
+      <img
+        src={slide.src}
+        alt={slide.alt}
+        data-slide={i}
+        class={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${i === 0 ? 'opacity-100' : 'opacity-0'}`}
+      />
+    ))}
+    <!-- Dark overlay for text legibility -->
+    <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(7,15,30,0.85) 0%, rgba(7,15,30,0.65) 60%, rgba(7,15,30,0.4) 100%);"></div>
+    <div class="grid-bg opacity-30"></div>
+  </div>
+
+  <!-- glows -->
+  <div class="absolute -top-50 -right-50 w-175 h-175 rounded-full pointer-events-none"
+       style="background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 65%);"></div>
+  <div class="absolute -bottom-37.5 -left-37.5 w-125 h-125 rounded-full pointer-events-none"
+       style="background: radial-gradient(circle, rgba(86,44,134,0.12) 0%, transparent 65%);"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 w-full max-w-[1200px] mx-auto self-stretch flex flex-col justify-center">
+    <div class="flex flex-col justify-center items-start animate-[heroIn_0.9s_ease_both] py-16">
       <div class="inline-flex items-center gap-2.5 bg-brand/12 border border-brand/30 rounded-full px-4 py-1.5 text-[0.78rem] tracking-[0.12em] uppercase text-brand font-semibold mb-7">
         <span class="w-1.5 h-1.5 bg-brand rounded-full animate-[pulse_2s_infinite] inline-block"></span>
         Trusted Business Process Outsourcing
@@ -25,4 +50,54 @@
         <a href="/careers" class="btn-ghost">Join Our Team</a>
       </div>
     </div>
-  </section>
+
+    <!-- Dots -->
+    <div class="absolute bottom-8 left-0 flex gap-2">
+      {slides.map((_, i) => (
+        <button
+          data-dot={i}
+          aria-label={`Go to slide ${i + 1}`}
+          class={`h-1.5 rounded-full transition-all duration-300 ${i === 0 ? 'bg-brand w-8' : 'bg-white/40 w-4'}`}
+        />
+      ))}
+    </div>
+  </div>
+
+</section>
+
+<script>
+  const slides = document.querySelectorAll<HTMLImageElement>('[data-slide]');
+  const dots = document.querySelectorAll<HTMLButtonElement>('[data-dot]');
+  let current = 0;
+  let timer: ReturnType<typeof setInterval>;
+
+  function goTo(index: number) {
+    slides[current].classList.replace('opacity-100', 'opacity-0');
+    dots[current].classList.remove('bg-brand', 'w-8');
+    dots[current].classList.add('bg-white/40', 'w-4');
+
+    current = index;
+
+    slides[current].classList.replace('opacity-0', 'opacity-100');
+    dots[current].classList.add('bg-brand', 'w-8');
+    dots[current].classList.remove('bg-white/40', 'w-4');
+  }
+
+  function next() {
+    goTo((current + 1) % slides.length);
+  }
+
+  function startTimer() {
+    timer = setInterval(next, 5000);
+  }
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      clearInterval(timer);
+      goTo(i);
+      startTimer();
+    });
+  });
+
+  startTimer();
+</script>
