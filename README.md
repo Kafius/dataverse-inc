@@ -54,9 +54,33 @@ npm run build
 npm run preview
 ```
 
+## Content management (Sanity)
+
+Team members, community events, and job openings live in Sanity (project `ty42rw91`, dataset `production`)
+rather than in the component files. Everything else on the site is still hardcoded.
+
+| Content | Studio type | Rendered by |
+|---------|-------------|-------------|
+| Team members | Team Member | `src/components/AboutTeam.astro` |
+| Community events | Community Event | `src/components/CommunityInitiatives.astro` |
+| Job openings | Job Opening | `src/components/CareersOpenings.astro` |
+
+Edit at **`/studio`** (`http://localhost:4321/studio` in dev). Schemas are in `src/sanity/schemaTypes/`,
+GROQ queries in `src/sanity/lib/queries.ts`.
+
+Photos are uploaded through the Studio and served from Sanity's CDN — adding a person or event needs no
+repo change. Use the **Display order** field to control position; lower numbers come first.
+
+> **The site is a static build, so publishing in the Studio does not update the live site on its own —
+> it needs a rebuild.** Wire a Sanity webhook to your host's deploy hook to make publish trigger a deploy.
+
+Copy `.env.example` to `.env` and fill in the project ID to run locally. `scripts/migrate-to-sanity.mjs`
+was the one-time import of the previously hardcoded content; it is kept for reference and refuses to
+re-run against a non-empty dataset.
+
 ## Customization Checklist
 
-- [ ] Replace placeholder team names, roles, and bios in `about.astro`
+- [x] ~~Replace placeholder team names, roles, and bios in `about.astro`~~ — now managed in Sanity
 - [ ] Update office addresses and phone numbers in `contact.astro`
 - [ ] Add real social media URLs in `contact.astro` and `Footer.astro`
 - [ ] Replace "Photo Placeholder" divs with `<img>` tags pointing to real photos

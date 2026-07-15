@@ -1,23 +1,9 @@
 ---
-const team = [
-  { name: 'Robin De Leon', photo: 'ROBIN.jpg', role: 'Chief Information Officer' },
-  { name: 'Caroline De Leon', photo: 'CAROLINE.jpeg', role: 'Chief Executive Officer' },
-  { name: 'Dennis Alfred De Leon', photo: 'DENNIS.png', role: 'Director of Sales, Marketing & Business Development' },
-  { name: 'Crystal Mae Tacadena', photo: 'CRYSTAL.png', role: 'Team Lead' },
-  { name: 'Kharen Abayon', photo: 'KHAREN.png', role: 'Team Lead' },
-  { name: 'Jemimah Salem', photo: 'JEMIMAH.png', role: 'Dataverse Agent' },
-  { name: 'Khrisma Crisostomo', photo: 'KHRISMA.png', role: 'Dataverse Agent' },
-  { name: 'Lara Jane Carpio', photo: 'LARA.png', role: 'Dataverse Agent' },
-  { name: 'Kyla Marie C. Molo', photo: 'KYLA.png', role: 'Dataverse Agent' },
-  { name: 'Dejay Dela Cruz Valencia', photo: 'DEJAY.png', role: 'Dataverse Agent' },
-  { name: 'Avi Jae Nino Bravo', photo: 'AVI JAE.png', role: 'Dataverse Agent' },
-  { name: 'Ghayzel Marie Reyes', photo: 'GHAYZEL.png', role: 'Dataverse Agent' },
-  { name: 'Jan Miles B. Ta-ay', photo: 'JAN MILES.png', role: 'Dataverse Agent' },
-  { name: 'Juluis Caesar D Candelario', photo: 'JULUIS.png', role: 'Dataverse Agent' },
-  { name: 'Aleah Dane Bautista', photo: 'ALEAH.png', role: 'Dataverse Agent' },
-  { name: 'Arien Dane F. Bautista', photo: 'ARIEN.png', role: 'Dataverse Agent' },
-  { name: 'Arnelyn De Juan Hontilano', photo: 'ARNELYN.png', role: 'Dataverse Agent' },
-];
+import { sanityClient } from 'sanity:client';
+import { TEAM_QUERY } from '../sanity/lib/queries';
+import { urlFor } from '../sanity/lib/image';
+
+const team = await sanityClient.fetch(TEAM_QUERY);
 ---
 
 <!-- TEAM -->
@@ -34,16 +20,19 @@ const team = [
       {team.map(member => (
         <div class="bg-white rounded-2xl overflow-hidden border border-black/7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(26,13,46,0.1)]">
           <div class="w-full aspect-square bg-gradient-to-br from-[#dce4ef] to-[#c5d2e4] relative overflow-hidden">
-            <img
-              src={`/images/team/${member.photo}`}
-              alt={member.name}
-              class="w-full h-full object-cover"
-              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-            />
-            <div class="absolute inset-0 flex-col items-center justify-center text-5xl hidden" style="display:none">
-              👤
-              <span class="absolute bottom-2.5 text-[0.65rem] tracking-[0.08em] uppercase text-navy/30">Photo Placeholder</span>
-            </div>
+            {member.photo ? (
+              <img
+                src={urlFor(member.photo).width(600).height(600).fit('crop').auto('format').url()}
+                alt={member.name}
+                loading="lazy"
+                class="w-full h-full object-cover"
+              />
+            ) : (
+              <div class="absolute inset-0 flex flex-col items-center justify-center text-5xl">
+                👤
+                <span class="absolute bottom-2.5 text-[0.65rem] tracking-[0.08em] uppercase text-navy/30">Photo Placeholder</span>
+              </div>
+            )}
           </div>
           <div class="px-5 py-4.5">
             <div class="font-bold text-[0.95rem] text-navy mb-0.5">{member.name}</div>
