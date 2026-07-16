@@ -1,6 +1,4 @@
 ---
-import aboutPhoto from '../assets/images/about-photo.png';
-
 const values = [
   { icon: '🎯', title: 'Precision', body: 'Multi-layer QA ensures accuracy on every project, every time.' },
   { icon: '🤝', title: 'Partnership', body: 'We invest in your success as if it were our own.' },
@@ -11,7 +9,7 @@ const values = [
 const milestones = [
   { year: '2022', title: 'Dataverse Founded', body: 'Launched as a boutique data entry and document processing firm serving local businesses.' },
   { year: '2023', title: 'Entertainment & Music Sector', body: 'Established specialized cue sheet processing services for the entertainment industry.' },
-  { year: 'Today', title: 'Growing Stronger', body: 'A team serving hundreds of clients across multiple industries with precision and pride.' },
+  { year: 'Today', title: 'Growing Stronger', body: 'A team serving clients across industries with precision and pride.' },
 ];
 ---
 
@@ -39,7 +37,29 @@ const milestones = [
     </div>
 
     <div class="sticky top-22">
-      <img src={aboutPhoto.src} alt="Dataverse team" class="w-full aspect-4/3 object-cover rounded-2xl mb-5" />
+      <button
+        type="button"
+        id="videoTrigger"
+        aria-label="Play the Dataverse orientation video, 3 minutes 38 seconds"
+        class="group relative block w-full p-0 mb-5 border-0 bg-transparent cursor-pointer rounded-2xl overflow-hidden"
+      >
+        <img
+          src="/videos/dataverse-orientation-poster.jpg"
+          alt=""
+          width="1280"
+          height="720"
+          class="block w-full aspect-video object-cover"
+        />
+        <span class="absolute inset-0 bg-navy/25 transition-colors group-hover:bg-navy/40"></span>
+        <span class="absolute inset-0 flex items-center justify-center">
+          <span class="flex items-center justify-center w-16 h-16 rounded-full bg-brand shadow-xl transition-transform group-hover:scale-110">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-6 h-6 text-navy ml-1">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
+        </span>
+        <span class="absolute bottom-3 right-3 px-2 py-1 rounded bg-navy/80 text-white text-[0.7rem] font-bold tracking-wide">3:38</span>
+      </button>
 
       <div class="grid grid-cols-2 gap-3">
         {values.map(v => (
@@ -53,3 +73,60 @@ const milestones = [
     </div>
   </div>
 </section>
+
+<dialog
+  id="videoModal"
+  aria-label="Dataverse orientation video"
+  class="w-[92vw] max-w-[1100px] bg-transparent p-0 border-0 backdrop:bg-navy/85"
+>
+  <button
+    type="button"
+    id="videoClose"
+    class="ml-auto mb-3 flex items-center gap-2 px-3 py-1.5 rounded-md bg-white/10 text-white text-[0.8rem] font-medium tracking-wide cursor-pointer border border-white/20 transition-colors hover:bg-white/20"
+  >
+    Close
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" class="w-3.5 h-3.5">
+      <path d="M18 6 6 18M6 6l12 12" stroke-linecap="round" />
+    </svg>
+  </button>
+
+  <video
+    id="orientationVideo"
+    controls
+    playsinline
+    preload="none"
+    poster="/videos/dataverse-orientation-poster.jpg"
+    class="block w-full aspect-video rounded-xl bg-black"
+  >
+    <source src="/videos/dataverse-orientation.mp4" type="video/mp4" />
+    Your browser does not support embedded video.
+    <a href="/videos/dataverse-orientation.mp4">Download the orientation video</a> instead.
+  </video>
+</dialog>
+
+<script>
+  const trigger = document.getElementById('videoTrigger');
+  const modal = document.getElementById('videoModal') as HTMLDialogElement | null;
+  const video = document.getElementById('orientationVideo') as HTMLVideoElement | null;
+  const closeBtn = document.getElementById('videoClose');
+
+  trigger?.addEventListener('click', () => {
+    modal?.showModal();
+    video?.play();
+  });
+
+  closeBtn?.addEventListener('click', () => modal?.close());
+
+  // Backdrop click — the dialog element itself only paints the area outside the content.
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) modal.close();
+  });
+
+  // Fires for the close button, backdrop, and Esc alike.
+  modal?.addEventListener('close', () => {
+    if (video) {
+      video.pause();
+      video.currentTime = 0;
+    }
+  });
+</script>

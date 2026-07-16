@@ -5,6 +5,9 @@ node_modules/
 dist/
 .astro/
 
+# Source video masters — kept local, too large for git and must stay out of public/
+video-masters/
+
 # Environment
 .env
 .env.local
