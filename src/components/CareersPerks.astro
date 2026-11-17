@@ -1,13 +1,14 @@
 ---
+import LineIcon from './LineIcon.astro';
 const perks = [
-  { icon: '💰', title: 'Competitive Pay', body: 'Market-leading salaries with performance bonuses and annual reviews.' },
-  { icon: '📈', title: 'Growth Paths', body: 'Clear advancement tracks and a strong record of internal promotions.' },
-  { icon: '🏥', title: 'Health Benefits', body: 'Medical, dental, and vision coverage for you and your family.' },
-  { icon: '🕐', title: 'Flexible Schedules', body: 'Full-time, part-time, and remote opportunities available.' },
-  { icon: '🎓', title: 'Training & Development', body: 'Paid onboarding programs and continuing education support.' },
-  { icon: '🌍', title: 'Inclusive Culture', body: 'A diverse, welcoming workplace where every background is valued.' },
-  { icon: '🏖️', title: 'Paid Time Off', body: 'Generous vacation, sick leave, and paid holidays.' },
-  { icon: '🤝', title: 'Supportive Team', body: 'Collaborative managers and teammates who have your back.' },
+  { icon: 'wallet', title: 'Competitive Pay', body: 'Market-leading salaries with performance bonuses and annual reviews.' },
+  { icon: 'trending-up', title: 'Growth Paths', body: 'Clear advancement tracks and a strong record of internal promotions.' },
+  { icon: 'heart-pulse', title: 'Health Benefits', body: 'Medical, dental, and vision coverage for you and your family.' },
+  { icon: 'clock', title: 'Flexible Schedules', body: 'Full-time, part-time, and remote opportunities available.' },
+  { icon: 'graduation-cap', title: 'Training & Development', body: 'Paid onboarding programs and continuing education support.' },
+  { icon: 'globe', title: 'Inclusive Culture', body: 'A diverse, welcoming workplace where every background is valued.' },
+  { icon: 'palmtree', title: 'Paid Time Off', body: 'Generous vacation, sick leave, and paid holidays.' },
+  { icon: 'handshake', title: 'Supportive Team', body: 'Collaborative managers and teammates who have your back.' },
 ];
 ---
 
@@ -22,7 +23,7 @@ const perks = [
       <div class="grid grid-cols-2 gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {perks.map(p => (
           <div class="bg-cream rounded-2xl px-6 py-7 border border-black/7 transition-all duration-300 hover:bg-white hover:-translate-y-0.75 hover:shadow-[0_10px_30px_rgba(0,0,0,0.07)]">
-            <span class="text-3xl block mb-3.5">{p.icon}</span>
+            <LineIcon name={p.icon} class="block mb-3.5 text-brand" size={28} />
             <h3 class="text-[0.95rem] font-bold text-navy mb-2">{p.title}</h3>
             <p class="text-[0.82rem] text-muted leading-[1.6]">{p.body}</p>
           </div>

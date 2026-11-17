@@ -1,4 +1,5 @@
 ---
+import LineIcon from './LineIcon.astro';
 import { sanityClient } from 'sanity:client';
 import { TEAM_QUERY } from '../sanity/lib/queries';
 import { urlFor } from '../sanity/lib/image';
@@ -28,8 +29,8 @@ const team = await sanityClient.fetch(TEAM_QUERY);
                 class="w-full h-full object-cover"
               />
             ) : (
-              <div class="absolute inset-0 flex flex-col items-center justify-center text-5xl">
-                👤
+              <div class="absolute inset-0 flex flex-col items-center justify-center">
+                <LineIcon name="user" class="text-navy/30" size={48} />
                 <span class="absolute bottom-2.5 text-[0.65rem] tracking-[0.08em] uppercase text-navy/30">Photo Placeholder</span>
               </div>
             )}

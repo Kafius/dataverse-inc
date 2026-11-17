@@ -1,9 +1,10 @@
 ---
+import LineIcon from './LineIcon.astro';
 const values = [
-  { icon: '🎯', title: 'Precision', body: 'Multi-layer QA ensures accuracy on every project, every time.' },
-  { icon: '🤝', title: 'Partnership', body: 'We invest in your success as if it were our own.' },
-  { icon: '🔒', title: 'Security', body: 'Your data is handled with the highest standards of confidentiality.' },
-  { icon: '⚡', title: 'Agility', body: 'Scalable capacity to meet your needs as they evolve.' },
+  { icon: 'target', title: 'Precision', body: 'Multi-layer QA ensures accuracy on every project, every time.' },
+  { icon: 'handshake', title: 'Partnership', body: 'We invest in your success as if it were our own.' },
+  { icon: 'lock', title: 'Security', body: 'Your data is handled with the highest standards of confidentiality.' },
+  { icon: 'zap', title: 'Agility', body: 'Scalable capacity to meet your needs as they evolve.' },
 ];
 
 const milestones = [
@@ -64,7 +65,7 @@ const milestones = [
       <div class="grid grid-cols-2 gap-3">
         {values.map(v => (
           <div class="bg-cream rounded-xl px-5 py-4.5 border border-black/6">
-            <span class="text-2xl block mb-2">{v.icon}</span>
+            <LineIcon name={v.icon} class="block mb-2 text-brand" size={26} />
             <h4 class="text-[0.88rem] font-bold text-navy mb-1">{v.title}</h4>
             <p class="text-[0.8rem] text-muted leading-normal">{v.body}</p>
           </div>

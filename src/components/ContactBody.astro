@@ -1,4 +1,5 @@
 ---
+import LineIcon from './LineIcon.astro';
 const offices = [
   {
     name: 'Our Main Office',
@@ -34,7 +35,7 @@ const socials = [
           {offices.map(o => (
             <div class="bg-cream border border-black/7 rounded-xl px-5 py-4.5 mb-2.5">
               <h4 class="text-[0.88rem] font-bold text-navy mb-1.5">{o.name}</h4>
-              <p class="text-[0.82rem] text-muted leading-[1.7]">{o.address}<br>{o.city}<br>📞 {o.phone}</p>
+              <p class="text-[0.82rem] text-muted leading-[1.7]">{o.address}<br>{o.city}<br><span class="inline-flex items-center gap-1.5 tabular-nums"><LineIcon name="phone" size={14} />{o.phone}</span></p>
             </div>
           ))}
         </div>
@@ -62,7 +63,7 @@ const socials = [
       <!-- RIGHT: Form -->
       <div class="bg-navy border border-brand/15 rounded-2xl px-10 py-11 max-sm:px-6 max-sm:py-7">
         <h2 class="font-serif text-2xl text-white mb-1.5">Send us a message</h2>
-        <p class="text-[0.875rem] text-white/50 mb-8">Fill out the form below and our team will get back to you within one business day.</p>
+        <p class="text-[0.875rem] text-white/65 mb-8">Fill out the form below and our team will get back to you within one business day.</p>
 
         <form id="contactForm">
           <div class="grid grid-cols-2 gap-4 max-sm:grid-cols-1">
@@ -132,7 +133,7 @@ const socials = [
           </div>
 
           <button type="submit" id="submitBtn"
-                  class="w-full bg-brand text-navy border-none py-3.5 rounded-lg text-[0.95rem] font-bold cursor-pointer transition-all tracking-[0.04em] mt-6 hover:bg-brand-light hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(139,92,246,0.3)] disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0">
+                  class="w-full bg-brand text-white border-none py-3.5 rounded-lg text-[0.95rem] font-bold cursor-pointer transition-all tracking-[0.04em] mt-6 hover:bg-brand-light hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(139,92,246,0.3)] disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0">
             Send Message
           </button>
         </form>
@@ -187,7 +188,7 @@ const socials = [
       });
 
       if (res.ok) {
-        btn.textContent = 'Message Sent ✓';
+        btn.textContent = 'Message sent';
         btn.style.background = '#22c55e';
         btn.style.color = '#fff';
         setTimeout(() => {

@@ -4,7 +4,7 @@
 @theme {
   --color-navy: #1A0D2E;
   --color-navy-mid: #2A1550;
-  --color-brand: #8B5CF6;
+  --color-brand: #7C3AED; /* deepened from #8B5CF6 so text and white-on-brand buttons pass AA (5.7:1) */
   --color-brand-light: #A78BFA;
   --color-cream: #F3F0F9;
   --color-warm-white: #FAFAFE;
@@ -48,7 +48,7 @@
   .divider.center { @apply mx-auto my-4; }
 
   .btn-primary {
-    @apply bg-brand text-navy font-bold py-[14px] px-8 rounded-lg text-[0.95rem] tracking-[0.02em] transition-all inline-block no-underline;
+    @apply bg-brand text-white font-bold py-[14px] px-8 rounded-lg text-[0.95rem] tracking-[0.02em] transition-all inline-block no-underline;
   }
   .btn-primary:hover {
     @apply bg-brand-light -translate-y-0.5;
@@ -59,13 +59,8 @@
   }
   .btn-ghost:hover { @apply border-brand text-brand; }
 
-  .grid-bg {
-    @apply absolute inset-0 pointer-events-none;
-    background-image:
-      linear-gradient(rgba(139, 92, 246, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
+  /* website-polish: decorative grid pattern removed (rule 13). */
+  .grid-bg { display: none; }
 
   .section { @apply py-[100px] px-[5%]; }
   .section-inner { @apply max-w-[1200px] mx-auto; }
@@ -79,4 +74,25 @@
 
 @media (max-width: 768px) {
   .section { padding-top: 70px; padding-bottom: 70px; }
+}
+
+/* ── website-polish ─────────────────────────────────────────────── */
+/* Eyebrows on navy sections use the lighter purple for contrast. */
+.bg-navy .section-eyebrow { color: var(--color-brand-light); }
+@layer base {
+  h1, h2, h3, h4 { text-wrap: balance; }
+  p, li, blockquote { text-wrap: pretty; }
+  a[href^="tel:"] { font-variant-numeric: tabular-nums; }
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 3px solid var(--color-brand-light);
+    outline-offset: 2px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
